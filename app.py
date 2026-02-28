@@ -149,11 +149,12 @@ if 'health_profile' not in st.session_state:
 # --- Create Tabs ---
 tab1, tab2, tab3 = st.tabs(["📋 Plan Generator", "🥗 Food Scanner", "🏋️ Room/Gym Analyzer"])
 
+# --- TAB 1: PLAN GENERATOR ---
 with tab1:
     col_input, col_display = st.columns([1, 2])
 
     with col_input:
-        # Use a Form to batch all inputs together
+        # Form to batch all inputs together
         with st.form("user_profile_form"):
             st.subheader("📋 Your Profile")
             
@@ -195,7 +196,7 @@ with tab1:
             Activity: {routine} ({activity}), Culture: {culture}
             """
             with st.spinner("Gemini is analyzing your health profile..."):
-                # 1. Create the detailed prompt for the AI
+                # Create the detailed prompt for the AI
                 exam_instructions = ""
                 if exam_mode:
                     exam_instructions = """
@@ -233,7 +234,7 @@ with tab1:
                 """
 
                 try:
-                    # 2. Call the real Gemini Model
+                    # Call the real Gemini Model
                     response = model.generate_content(prompt)
                     st.session_state.plan = response.text
                 except Exception as e:
@@ -265,7 +266,7 @@ with tab1:
                 st.bar_chart(chart_data.set_index("Nutrient"), color="#4f8bf9")
                 st.success("Plan Generated Successfully!")
 
-            # 4. Update the Download Button with real data
+            # Update the Download Button with real data
             downloadable_text = full_text.replace("### ", "--- ").replace("**", "") # Clean the text for better readability in the .txt file
             st.download_button(
                 label="📥 Download My Plan (.txt)",
@@ -274,6 +275,7 @@ with tab1:
                 mime="text/plain",
                 use_container_width=True
             )
+# --- TAB 2: FOOD SCANNER ---
 with tab2:
     st.header("🥗 AI Food & Nutrition Scanner")
     st.write("Upload a photo of your meal for an instant nutritional breakdown.")
@@ -335,9 +337,11 @@ with tab3:
     
     room_file = st.file_uploader("Upload space photo...", type=["jpg", "jpeg", "png"], key="room_upload")
     
+    # Update session state image if a new one is uploaded
     if room_file:
         st.session_state.room_image = Image.open(room_file)
         
+    # Layout: Image on left, Results on right
     col_img_room, col_res_room = st.columns([1, 1])
     
     with col_img_room:
