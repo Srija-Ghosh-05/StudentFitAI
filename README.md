@@ -154,4 +154,4 @@ Contributions, issues, and feature requests are welcome! Feel free to open an is
 
 ## 🙋‍♂️ Author
 
-Developed by [Srija Ghosh](https://github.com/Srija-Ghosh-05) during AI and ML internship project at Edunet Foundation.
+Developed by [Srija Ghosh](https://github.com/Srija-Ghosh-05) as part of an AI & ML Internship at Edunet Foundation.
