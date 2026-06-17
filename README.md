@@ -152,12 +152,6 @@ Contributions, issues, and feature requests are welcome! Feel free to open an is
 
 ---
 
-## 📄 License
-
-This project was developed as part of an internship. Please check with the organization before redistributing.
-
----
-
 ## 🙋‍♂️ Author
 
-Developed with ❤️ during an AI internship project.
+Developed by [Srija Ghosh](https://github.com/Srija-Ghosh-05) during AI and ML internship project at Edunet Foundation.
